@@ -31,5 +31,3 @@ jobs:
     #helm upgrade --install ml-app ./charts \
     #--set image.repository=mazcot4devops/ml-app \
     #--set image.tag=latest
-
-

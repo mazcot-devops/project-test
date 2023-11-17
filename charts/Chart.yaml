@@ -1,4 +1,4 @@
 apiVersion: v2
 name: ml-app
-description: Helm chart  ML application
+description: Helm chart  Go application
 version: 0.1.0

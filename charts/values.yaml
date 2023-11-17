@@ -1,5 +1,5 @@
 image:
-  repository: mazcot4devops/ml-app
+  repository: your-docker-username/your-app-name
   tag: latest
 
 service:
