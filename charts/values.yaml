@@ -1,5 +1,5 @@
 image:
-  repository: your-docker-username/your-app-name
+  repository: mazcot4devops/ml-app
   tag: latest
 
 service:
@@ -11,5 +11,27 @@ iam:
   roles:
   - name: ml-app-role
     policies:
-    - "AmazonS3FullAccess"
-    - "AmazonSQSFullAccess"
+    - name: s3-access-policy
+      policyDocument: |
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": ["s3:GetObject", "s3:PutObject"],
+              "Resource": ["arn:aws:s3:::my-web-assets/*"]
+            }
+          ]
+        }
+    - name: sqs-access-policy
+      policyDocument: |
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": ["sqs:SendMessage", "sqs:ReceiveMessage", "sqs:DeleteMessage"],
+              "Resource": ["arn:aws:sqs:ap-southeast-1:123456789123:lms-import-data"]
+            }
+          ]
+        }
