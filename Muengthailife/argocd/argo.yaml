@@ -1,0 +1,18 @@
+# argocd/argocd-app.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ml-app
+  namespace: default
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  source:
+    repoURL: 'https://github.com/your-repo/your-app'
+    path: '/Muengthailife/argocd/argo.yaml'
+    targetRevision: 'main'
+  project: default
+  syncPolicy:
+    automated: {}
+

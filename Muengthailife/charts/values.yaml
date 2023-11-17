@@ -1,0 +1,15 @@
+image:
+  repository: your-docker-username/your-app-name
+  tag: latest
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8080
+
+iam:
+  roles:
+  - name: ml-app-role
+    policies:
+    - "AmazonS3FullAccess"
+    - "AmazonSQSFullAccess"
