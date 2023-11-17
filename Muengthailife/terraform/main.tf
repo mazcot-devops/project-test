@@ -5,13 +5,9 @@ provider "aws" {
 module "eks" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = "ml-eks-cluster"
-  cluster_version = "1.25"
-
-  subnets = {
-    private = ["subnet-1", "subnet-2", "subnet-3"]
-    public  = ["subnet-4", "subnet-5", "subnet-6"]
-  }
-
+  subnets         = ["subnet-1", "subnet-2", "subnet-3"]  
+  vpc_id          = "vpc-01234567890abcdef"                          
+  cluster_version = "1.25"                                  
   node_groups = {
     eks_nodes = {
       desired_capacity = 2
@@ -20,3 +16,4 @@ module "eks" {
     }
   }
 }
+

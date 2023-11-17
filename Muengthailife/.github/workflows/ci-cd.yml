@@ -1,0 +1,35 @@
+name: ML-CI/CD
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.20
+
+    - name: Build
+      run: go build -o main .
+
+    - name: Build and Push
+      run: |
+        docker build -t mazcot4devops/ml-app:latest .
+        docker push mazcot4devops/ml-app:latest
+
+    #- name: Deploy to EKS with Helm
+    #run: |
+    #helm upgrade --install ml-app ./charts \
+    #--set image.repository=mazcot4devops/ml-app \
+    #--set image.tag=latest
+
+
