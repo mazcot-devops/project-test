@@ -8,7 +8,7 @@ spec:
     server: 'https://kubernetes.default.svc'
     namespace: default
   source:
-    repoURL: 'https://github.com/mazcot-devops/devops'
+    repoURL: 'https://github.com/mazcot-devops/project-test'
     path: 'deployment'
     targetRevision: 'master'
   project: default
