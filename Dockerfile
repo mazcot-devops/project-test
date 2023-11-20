@@ -7,5 +7,3 @@ EXPOSE 8080
 CMD ["./main"]
 
 
-
-"vpc01234567890abcdef"-
