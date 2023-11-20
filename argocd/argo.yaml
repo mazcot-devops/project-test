@@ -2,15 +2,15 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: ml-app
-  namespace: default
+  namespace: ml
 spec:
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
   source:
     repoURL: 'https://github.com/mazcot-devops/project-test'
-    path: 'deployment'
+    path: 'charts/templates'
     targetRevision: 'master'
-  project: default
+  project: ml-life
   syncPolicy:
     automated: {}
