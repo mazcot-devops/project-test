@@ -24,7 +24,15 @@ jobs:
     - name: Build
       run: go build -o main .
 
-    - name: Build and Push
+    - name: Build and Push Docker Image
       run: |
         docker build -t mazcot4devops/ml-app:latest .
         docker push mazcot4devops/ml-app:latest
+
+    - name: Update Helm Chart Image
+      run: |
+        helm repo add stable https://charts.helm.sh/stable
+        helm repo update
+        helm upgrade ml-app ./devops/charts --namespace ml \
+          --set image.repository=mazcot4devops/ml-app \
+          --set image.tag=latest
