@@ -9,8 +9,8 @@ spec:
     namespace: default
   source:
     repoURL: 'https://github.com/mazcot-devops/devops'
-    path: 'argocd'
-    targetRevision: 'main'
+    path: 'deployment'
+    targetRevision: 'master'
   project: default
   syncPolicy:
     automated: {}
