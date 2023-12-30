@@ -26,27 +26,5 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        docker build -t mazcot4devops/ml-app:latest .
-        docker push mazcot4devops/ml-app:
-
-    - name: Container Image Scan
-      uses: anchore/scan-action@v2
-      with:
-        image-reference: mazcot4devops/mi-app:latest
-        anchore-engine-url: ${{ secrets.ANCHORE_URL }}
-        anchore-engine-user: ${{ secrets.ANCHORE_USER }}
-        anchore-engine-password: ${{ secrets.ANCHORE_PASSWORD }}
-
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-    - name: Update Helm Chart Image
-      run: |
-        helm repo add stable https://charts.helm.sh/stable
-        helm repo update
-        helm upgrade ml-app ./charts --namespace ml \
-          --set image.repository=mazcot4devops/ml-app \
-          --set image.tag=latest
+        docker build -t mazcot4devops/test-app:latest .
+        docker push mazcot4devops/test-app:
